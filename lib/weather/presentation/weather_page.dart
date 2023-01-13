@@ -23,8 +23,7 @@ class _WeatherPageState extends State<WeatherPage> {
   Future<void> getWeather() async {
     WeatherFactory factory = WeatherFactory();
     var newModel = await factory.getWeather(_controller.text);
-    Provider.of<WeatherProvider>(context, listen: false)
-      .changeModel(newModel);
+    Provider.of<WeatherProvider>(context, listen: false).changeModel(newModel);
   }
 
   @override
@@ -56,77 +55,77 @@ class _WeatherPageState extends State<WeatherPage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-
       body: Center(
-        child: Column (
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Row (
-              mainAxisAlignment: MainAxisAlignment.center,
-              children:<Widget> [
+            Flexible(
+              child: Text("Enter location: "),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
                 Flexible(
-                  child: Text("Enter location: "),
-                ),
-                Flexible(
+                  flex: 3,
                   child: TextField(
                     decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: "Input location"
-                    ),
+                        border: OutlineInputBorder(),
+                        hintText: "Input location"),
                     controller: _controller,
                   ),
                 ),
                 Flexible(
+                  flex: 1,
                   child: TextButton(
-                      onPressed: () {
-                        getWeather();
-                      },
-                      child: Text("Submit"),
+                    onPressed: () {
+                      getWeather();
+                    },
+                    child: Text("Submit"),
                   ),
                 ),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget> [
+              children: <Widget>[
                 Flexible(
                   child: Text("Condition: "),
                 ),
                 Flexible(
-                    child: Text(_main),
+                  child: Text(_main),
                 ),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget> [
+              children: <Widget>[
                 Flexible(
                   child: Text("Description: "),
                 ),
                 Flexible(
-                    child: Text(_desc),
+                  child: Text(_desc),
                 ),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget> [
+              children: <Widget>[
                 Flexible(
                   child: Text("Temperature: "),
                 ),
                 Flexible(
-                    child: Text(_temp),
+                  child: Text(_temp),
                 ),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget> [
+              children: <Widget>[
                 Flexible(
                   child: Text("Location: "),
                 ),
                 Flexible(
-                    child: Text(_loc),
+                  child: Text(_loc),
                 )
               ],
             ),
